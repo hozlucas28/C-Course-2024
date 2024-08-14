@@ -1,7 +1,7 @@
-#ifndef LIBRARY_H_INCLUDED
-#define LIBRARY_H_INCLUDED
+#ifndef LIBRARY_01_H_INCLUDED
+#define LIBRARY_01_H_INCLUDED
 
 int getUserInput();
 int factorial(int number);
 
-#endif // LIBRARY_H_INCLUDED
+#endif // LIBRARY_01_H_INCLUDED

@@ -25,6 +25,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="../library/bin/Release/library.a" />
 				</Linker>
 			</Target>
 		</Build>
