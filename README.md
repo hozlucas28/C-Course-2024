@@ -39,10 +39,10 @@
 <p>
     <ul>
         <li>
-            <a href="https://github.com/hozlucas28/C-Course-2023" target="_blank">Repository of C course - 2023</a>
+            <a href="https://github.com/hozlucas28/C-Course-2022" target="_blank">Repository of C course - 2022</a>
         </li>
         <li>
-            <a href="https://github.com/hozlucas28/C-Course-2022" target="_blank">Repository of C course - 2022</a>
+            <a href="https://github.com/hozlucas28/C-Course-2023" target="_blank">Repository of C course - 2023</a>
         </li>
         <li>
             <a href="https://github.com/hozlucas28/C--Course-2022" target="_blank">Repository of C++ course - 2022</a>
