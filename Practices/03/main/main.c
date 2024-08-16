@@ -9,20 +9,20 @@ int main()
     int exponential;
 
     double tolerance;
-    double calculatedE;
+    double calculatedEX;
 
     printf("> Enter an exponential (integer): ");
     exponential = getUserInput();
 
     printf("> Enter a tolerance (double): ");
-    tolerance = getUserInputFloat();
+    tolerance = getUserInputDouble();
 
-    calculatedE = calculateE(exponential, tolerance);
+    calculatedEX = calculateEX(exponential, tolerance);
 
     printf(
-        "> e^%d is equal to %f (limited by %f of tolerance).",
+        "> e^%d is equal to %lf (limited by %lf of tolerance).",
         exponential,
-        calculatedE,
+        calculatedEX,
         tolerance
     );
 

@@ -15,8 +15,10 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
+					<Add library="../../01/library/bin/Debug/library.a" />
 					<Add library="../../01/library/bin/Release/library.a" />
 					<Add library="../library/bin/Debug/library.a" />
+					<Add library="../library/bin/Release/library.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -29,6 +31,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="../../01/library/bin/Debug/library.a" />
+					<Add library="../../01/library/bin/Release/library.a" />
+					<Add library="../library/bin/Debug/library.a" />
+					<Add library="../library/bin/Release/library.a" />
 				</Linker>
 			</Target>
 		</Build>

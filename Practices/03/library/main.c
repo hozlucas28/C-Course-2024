@@ -1,26 +1,26 @@
 #include <math.h>
 #include <stdio.h>
+
 #include "../../01/library/library.h"
 
-double calculateE(int exponential, double tolerance) {
+double calculateEX(int exponential, double tolerance) {
     int i;
 
-    double aux;
-    double result;
+    double term = 1;
+    double result = term;
 
-    aux = 1;
-    for(i = 1; aux < tolerance; i++) {
-        result = aux;
-        aux+=((pow(exponential, i)) / factorial(i));
+    for(i = 1; fabs(term) >= tolerance; i++) {
+        term = pow(exponential, i) / factorial(i);
+        result += term;
     };
 
     return result;
 }
 
-float getUserInputFloat() {
-    float userInput;
+double getUserInputDouble() {
+    double userInput;
 
-    scanf("%f", &userInput);
+    scanf("%lf", &userInput);
     fflush(stdin);
 
     return userInput;
