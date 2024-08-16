@@ -25,7 +25,9 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="../library/bin/Debug/library.a" />
 					<Add library="../library/bin/Release/library.a" />
+					<Add library="../../01/library/bin/Debug/library.a" />
 					<Add library="../../01/library/bin/Release/library.a" />
 				</Linker>
 			</Target>
