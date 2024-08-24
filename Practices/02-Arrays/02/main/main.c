@@ -11,7 +11,7 @@ int main()
     char userInputMsg[] = "\n\n> Enter an integer: ";
     bool outOfMaxLength = false;
 
-    int arr[maxLength];
+    int arr[maxLength] = {};
 
     IntArray intArr;
 
