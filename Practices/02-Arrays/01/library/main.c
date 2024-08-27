@@ -2,13 +2,13 @@
 
 #include "library.h"
 
-bool insertIntAt(IntArray* arr, int index, int element) {
+int insertIntAt(IntArray* arr, int index, int element) {
     if (index > arr->maxLength - 1) {
-        return false;
+        return 0;
     };
 
     arr->array[index] = element;
-    return true;
+    return 1;
 }
 
 void printReprIntArray(IntArray* arr) {

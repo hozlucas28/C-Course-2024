@@ -2,9 +2,9 @@
 
 #include "../library/main.h"
 
-bool (*pCMPFn)(int element, int index);
+int (*pCMPFn)(int element, int index);
 
-bool cmpFn(int element, int index) {
+int cmpFn(int element, int index) {
     return element % 2 == 0;
 }
 

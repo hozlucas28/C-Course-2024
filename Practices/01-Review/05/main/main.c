@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 #include "../library/library.h"
@@ -7,7 +6,7 @@
 int main()
 {
     int userInput;
-    bool isFibo;
+    int isFibo;
     char* msg;
 
     printf("> Enter an integer: ");

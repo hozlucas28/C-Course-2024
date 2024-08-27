@@ -12,7 +12,7 @@ int getStrLength(char* str) {
     return length;
 }
 
-bool isPalindrome(char* str) {
+int isPalindrome(char* str) {
     int i;
     char aux01;
     char aux02;
@@ -23,9 +23,9 @@ bool isPalindrome(char* str) {
         aux02 = tolower(str[strLength - i - 1]);
 
         if (aux01 != aux02) {
-            return false;
+            return 0;
         };
     };
 
-    return true;
+    return 1;
 }

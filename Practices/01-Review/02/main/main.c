@@ -1,21 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #include "../library/library.h"
 #include "../../01/library/library.h"
 
 int n;
 
-bool (*mValFn)(int userInput);
+int (*mValFn)(int userInput);
 
-bool mValidationFn(int userInput) {
+int mValidationFn(int userInput) {
     return userInput >= n;
 }
 
-bool (*nValFn)(int userInput);
+int (*nValFn)(int userInput);
 
-bool nValidationFn(int userInput) {
+int nValidationFn(int userInput) {
     return userInput >= 0;
 }
 

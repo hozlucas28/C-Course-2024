@@ -1,8 +1,6 @@
 #ifndef MAIN_02_H_INCLUDED
 #define MAIN_02_H_INCLUDED
 
-#include <stdbool.h>
-
 typedef struct {
     int* array;
     int maxLength;
@@ -11,7 +9,7 @@ typedef struct {
 
 int getUserInputInt(char* message);
 
-bool addIntToIntArray(IntArray* arr, int element);
+int addIntToIntArray(IntArray* arr, int element);
 
 void printReprIntArray(IntArray* arr);
 

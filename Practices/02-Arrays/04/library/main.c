@@ -3,9 +3,9 @@
 
 #include "main.h"
 
-void deleteFuncIntArray(IntArray* arr, bool (*cmpFn)(int element, int index)) {
+void deleteFuncIntArray(IntArray* arr, int (*cmpFn)(int element, int index)) {
     int i;
-    bool cmp;
+    int cmp;
 
     for (i = 0; i < arr->occLength; i++) {
         cmp = (*cmpFn)(arr->array[i], i);
@@ -25,18 +25,18 @@ void printIntArray(IntArray* arr) {
     printf(" ]");
 }
 
-bool spliceIntArray(IntArray* arr, int index, int count) {
+int spliceIntArray(IntArray* arr, int index, int count) {
     int i;
     int j;
     int* sanitizedArr = malloc(arr->maxLength * sizeof(int));
 
     if (!sanitizedArr) {
-        return false;
+        return 0;
     }
 
     if (index < 0 || index > (arr->occLength - 1) || count <= 0) {
         free(sanitizedArr);
-        return false;
+        return 0;
     }
 
     for (i = 0; i < index; i++) {
@@ -52,5 +52,5 @@ bool spliceIntArray(IntArray* arr, int index, int count) {
     arr->array = sanitizedArr;
     arr->occLength -= count;
 
-    return true;
+    return 1;
 }

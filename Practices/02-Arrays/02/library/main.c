@@ -12,18 +12,18 @@ int getUserInputInt(char* message) {
     return userInput;
 }
 
-bool addIntToIntArray(IntArray* arr, int element) {
+int addIntToIntArray(IntArray* arr, int element) {
     int index = arr->occLength;
 
     if (arr->occLength >= arr->maxLength) {
-        return false;
+        return 0;
     };
 
     arr->array[index] = element;
     arr->occLength += 1;
 
     sortAscIntArray(arr);
-    return true;
+    return 1;
 }
 
 void printReprIntArray(IntArray* arr) {

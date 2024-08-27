@@ -1,11 +1,11 @@
-#include <stdbool.h>
 #include <stdio.h>
+
 #include "../../01/library/library.h"
 
 int requestUserInput(
     char* msg,
     char* failValidationMsg,
-    bool (*validationFn)(int)
+    int (*validationFn)(int)
 ){
     int userInput;
 

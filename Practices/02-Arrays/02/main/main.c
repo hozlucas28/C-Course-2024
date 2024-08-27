@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 #include "../library/main.h"
@@ -9,9 +8,9 @@ int main()
 
     int userInput;
     char userInputMsg[] = "\n\n> Enter an integer: ";
-    bool outOfMaxLength = false;
+    int outOfMaxLength = 0;
 
-    int arr[maxLength] = {};
+    int arr[maxLength];
 
     IntArray intArr;
 
