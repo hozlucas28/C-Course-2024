@@ -18,13 +18,11 @@ int isPalindrome(char* str) {
     char aux02;
     int strLength = getStrLength(str);
 
-    for (i = 0; &str[i] != &str[strLength - i - 1]; i++) {
-        aux01 = tolower(str[i]);
-        aux02 = tolower(str[strLength - i - 1]);
+    for (i = 0; (str + i) != (str + strLength - i - 1); i++) {
+        aux01 = tolower(*(str + i));
+        aux02 = tolower(*(str + strLength - i - 1));
 
-        if (aux01 != aux02) {
-            return 0;
-        };
+        if (aux01 != aux02) return 0;
     };
 
     return 1;

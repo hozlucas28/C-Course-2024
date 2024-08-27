@@ -5,10 +5,12 @@
 
 void printIntArray(IntArray* arr) {
     int i;
+    int element;
 
     printf("[");
     for (i = 0; i < arr->occLength; i++) {
-        printf(" %d", arr->array[i]);
+        element = *(arr->array + i);
+        printf(" %d", element);
     }
     printf(" ]");
 }
@@ -29,12 +31,12 @@ int spliceIntArray(IntArray* arr, int index, int count) {
     };
 
     for (i = 0; i < index; i++) {
-        sanitizedArr[i] = arr->array[i];
+        *(sanitizedArr + i) = *(arr->array + i);
     };
 
     i = index;
     for (j = index + count; j < arr->occLength; j++) {
-        sanitizedArr[i] = arr->array[j];
+        *(sanitizedArr + i) = *(arr->array + j);
         i++;
     };
 

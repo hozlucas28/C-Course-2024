@@ -19,7 +19,7 @@ int addIntToIntArray(IntArray* arr, int element) {
         return 0;
     };
 
-    arr->array[index] = element;
+    *(arr->array + index) = element;
     arr->occLength += 1;
 
     sortAscIntArray(arr);
@@ -28,10 +28,12 @@ int addIntToIntArray(IntArray* arr, int element) {
 
 void printReprIntArray(IntArray* arr) {
     int i;
+    int element;
 
     printf("> array = [ ");
     for (i = 0; i < arr->occLength; i++) {
-        printf("%d ", arr->array[i]);
+        element = *(arr->array + i);
+        printf("%d ", element);
     };
     printf("]");
 
@@ -47,17 +49,18 @@ void sortAscIntArray(IntArray* arr) {
     int cmp;
 
     for (i = 0; i < arr->occLength; i++) {
-        anchorElem = arr->array[i];
+        anchorElem = *(arr->array + i);
 
         for (j = arr->occLength - 1; j > i; j--) {
-            nextElem = arr->array[j];
+            nextElem = *(arr->array + j);
             cmp = anchorElem - nextElem;
 
             if (cmp > 0) {
-                arr->array[i] = nextElem;
-                arr->array[j] = anchorElem;
+                *(arr->array + i) = nextElem;
+                *(arr->array + j) = anchorElem;
                 anchorElem = nextElem;
-            };
+
+
         };
     };
 }
