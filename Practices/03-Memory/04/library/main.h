@@ -1,6 +1,6 @@
 
-#ifndef MAIN_XX_H_INCLUDED
-#define MAIN_XX_H_INCLUDED
+#ifndef MAIN_04_H_INCLUDED
+#define MAIN_04_H_INCLUDED
 
 #include <stdlib.h>
 
@@ -10,4 +10,4 @@ int getStrLength(const char* str);
 
 char* _strcpy(const char* str);
 
-#endif // MAIN_XX_H_INCLUDED
+#endif // MAIN_04_H_INCLUDED
