@@ -18,7 +18,7 @@ int main()
 
     printf(
         "> Is `arr` a diagonal matrix? %s.",
-        isDiagonal(arr, rows, cols) ? "Yes" : "False"
+        isDiagonal(arr, rows, cols) ? "Yes" : "No"
     );
 
     return 0;
