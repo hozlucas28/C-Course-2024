@@ -67,8 +67,7 @@ perm.txt
 
 # Libraries
 *.lib
-# *.a
-!./Exams/05/libgbib.a
+*.a
 *.la
 *.lo
 
