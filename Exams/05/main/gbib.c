@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdarg.h>
 #include <string.h>
 
 #include "./gbib.h"
@@ -41,7 +42,7 @@ int restaurarArchClientesALU(const char* archOri, const char* archDes){
 
     while(fgets(lineClient, CLIENT_LINE_LENGTH, oriFile)) {
         parseToClient(lineClient, &client);
-        append(clients, &client);
+        append(clients, 1, &client);
     };
 
     fclose(oriFile);
@@ -61,7 +62,7 @@ int restaurarArchClientesALU(const char* archOri, const char* archDes){
 
     while(fgets(linePermutation, PERMUTATION_LINE_LENGTH, permFile)) {
         parseToPermutation(linePermutation, &permutation);
-        unshift(permutations, &permutation);
+        unshift(permutations, 1, &permutation);
     };
 
     fclose(permFile);
@@ -127,58 +128,94 @@ void destroySlice(Slice* slice) {
     free(slice);
 }
 
-unsigned char append(Slice* slice, void* element) {
-    void* aux;
+unsigned char append(Slice* slice, const size_t listLength, ...) {
+    size_t i;
+    va_list listOfElements;
 
-    if (slice->length == slice->maxLength) {
-        aux = realloc(slice->arr, slice->sizeOfDataType * (slice->maxLength + 1));
+    void* aux;
+    void* element;
+
+    if ((slice->length + listLength) > slice->maxLength) {
+        aux = realloc(slice->arr, slice->sizeOfDataType * (slice->length + listLength));
         if (aux == NULL) return 1;
 
         slice->arr = aux;
-        slice->maxLength++;
+        slice->maxLength = slice->length + listLength;
     };
 
-    memcpy(
-        (char*)(slice->arr) + (slice->sizeOfDataType * slice->length),
-        element,
-        slice->sizeOfDataType
-    );
+    va_start(listOfElements, listLength);
 
-    slice->length++;
+    for (i = 0; i < listLength; i++) {
+        element = va_arg(listOfElements, void*);
+
+        memcpy(
+            (char*)(slice->arr) + (slice->sizeOfDataType * slice->length),
+            element,
+            slice->sizeOfDataType
+        );
+
+        slice->length++;
+    };
+
+    va_end(listOfElements);
 
     return 0;
 }
 
-unsigned char unshift(Slice* slice, void* element) {
-    void* aux;
-
+unsigned char unshift(Slice* slice, const size_t listLength, ...) {
     size_t i;
+    va_list listOfElements;
+
+    void* aux;
+    void* element;
+
+    size_t j;
     char* currentElem;
     char* prevElem;
 
-    if (slice->length == slice->maxLength) {
-        aux = realloc(slice->arr, slice->sizeOfDataType * (slice->maxLength + 1));
+    if ((slice->length + listLength) > slice->maxLength) {
+        aux = realloc(slice->arr, slice->sizeOfDataType * (slice->length + listLength));
         if (aux == NULL) return 1;
 
         slice->arr = aux;
-        slice->maxLength++;
+        slice->maxLength = slice->length + listLength;
     };
 
-    for (i = slice->length; i > 0; i--) {
-        currentElem = ((char*)slice->arr) + slice->sizeOfDataType * i;
-        prevElem = currentElem - slice->sizeOfDataType;
-        _swap(currentElem, prevElem, slice->sizeOfDataType);
+    va_start(listOfElements, listLength);
+
+    for (i = 0; i < listLength; i++) {
+        element = va_arg(listOfElements, void*);
+
+        for (j = slice->length; j > 0; j--) {
+            currentElem = ((char*)slice->arr) + slice->sizeOfDataType * j;
+            prevElem = currentElem - slice->sizeOfDataType;
+            _swap(currentElem, prevElem, slice->sizeOfDataType);
+        };
+
+        memcpy(
+            (char*)slice->arr,
+            element,
+            slice->sizeOfDataType
+        );
+
+        slice->length++;
     };
 
-    memcpy(
-        (char*)slice->arr,
-        element,
-        slice->sizeOfDataType
-    );
-
-    slice->length++;
+    va_end(listOfElements);
 
     return 0;
+}
+
+void printSlice(Slice* slice, void (*printMethod)(void* element)) {
+    size_t i;
+    void* element;
+
+    printf("[");
+    for (i = 0; i < slice->length; i++) {
+        element = (char*)slice->arr + i * slice->sizeOfDataType;
+        printMethod(element);
+    };
+    printf(" ]");
 }
 
 void _swap(const void* a, const void* b, const size_t sizeOfDataType) {
@@ -245,6 +282,11 @@ int cmpClientsID(const void* clientA, const void* clientB) {
     Client* _clientA = (Client*)clientA;
     Client* _clientB = (Client*)clientB;
     return _clientA->id - _clientB->id;;
+}
+
+void printInt(void* element) {
+    int* _element = (int*)element;
+    printf(" %d", *_element);
 }
 
 void printClientsSlice(Slice* slice) {

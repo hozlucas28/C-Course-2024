@@ -2,6 +2,7 @@
 #define GBIB_H_INCLUDED
 
 #include <stdlib.h>
+#include <stdarg.h>
 
 #define MAX_CLIENTS_PERMUTATIONS 50000
 
@@ -44,8 +45,9 @@ int restaurarArchClientesALU(const char* archOri, const char* archDes);
 
 Slice* newSlice(const size_t sizeOfDataType, const size_t maxLength);
 void destroySlice(Slice* slice);
-unsigned char append(Slice* slice, void* element);
-unsigned char unshift(Slice* slice, void* element);
+unsigned char append(Slice* slice, const size_t listLength, ...);
+unsigned char unshift(Slice* slice, const size_t listLength, ...);
+void printSlice(Slice* slice, void (*printMethod)(void* element));
 
 void _swap(const void* a, const void* b, const size_t sizeOfDataType);
 
@@ -54,6 +56,7 @@ unsigned char parseToPermutation(char* line, Permutation* permutation);
 
 int cmpClientsID(const void* clientA, const void* clientB);
 
+void printInt(void* element);
 void printClientsSlice(Slice* slice);
 void printPermutationsSlice(Slice* slice);
 
