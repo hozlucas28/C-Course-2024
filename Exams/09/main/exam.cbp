@@ -31,10 +31,14 @@
 		<Linker>
 			<Add library="./ExamLibrary.a" />
 		</Linker>
-		<Unit filename="./main.h" />
-		<Unit filename="./main.c">
+		<Unit filename="functions.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="partners-b.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
