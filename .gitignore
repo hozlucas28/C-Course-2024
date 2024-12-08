@@ -45,6 +45,7 @@ Exams/08/main/tablaRecuperada.txt
 Practices/Pre-final-exam/Replace-All-Words/main/file-modified.txt
 
 Exams/09/main/partners-a.bin
+Exams/09/main/partners-merged.txt
 
 
 
@@ -73,7 +74,7 @@ Exams/09/main/partners-a.bin
 
 # Libraries
 *.lib
-*.a
+# *.a
 *.la
 *.lo
 
