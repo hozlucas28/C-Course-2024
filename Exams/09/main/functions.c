@@ -52,12 +52,9 @@ unsigned char mergePartnersFiles(
     size_t counterB = 0;
 
     while (
-        fgets(fileBLine, fileBLineLength, fileB) &&
-           fread(&partnerFileA, sizeof(Partner), 1, fileA)
+        fread(&partnerFileA, sizeof(Partner), 1, fileA) &&
+           fgets(fileBLine, fileBLineLength, fileB)
     ) {
-        counterA++;
-        counterB++;
-
         fieldsRead = parseToPartner(fileBLine, &partnerFileB);
         if (fieldsRead != 3) continue;
 
@@ -65,11 +62,32 @@ unsigned char mergePartnersFiles(
 
         while (cmpPartnersValue != 0) {
             if (cmpPartnersValue > 0) {
+                fprintf(
+                    mergedFile,
+                    "%02d|%s|%02d/%02d/%04d\n",
+                    partnerFileB.id,
+                    partnerFileB.fullName,
+                    partnerFileB.registrationDate.day,
+                    partnerFileB.registrationDate.month,
+                    partnerFileB.registrationDate.year
+                );
+
                 if (!fgets(fileBLine, fileBLineLength, fileB)) break;
                 fieldsRead = parseToPartner(fileBLine, &partnerFileB);
             } else {
+                fprintf(
+                    mergedFile,
+                    "%02d|%s|%02d/%02d/%04d\n",
+                    partnerFileA.id,
+                    partnerFileA.fullName,
+                    partnerFileA.registrationDate.day,
+                    partnerFileA.registrationDate.month,
+                    partnerFileA.registrationDate.year
+                );
+
                 if (!fread(&partnerFileA, sizeof(Partner), 1, fileA)) break;
             };
+
             cmpPartnersValue = cmpPartners(&partnerFileA, &partnerFileB);
         };
 
@@ -80,12 +98,39 @@ unsigned char mergePartnersFiles(
 
         fprintf(
             mergedFile,
-            "%d|%s|%d/%d/%d\n",
+            "%02d|%s|%02d/%02d/%04d\n",
             partnerMerged->id,
             partnerMerged->fullName,
             partnerMerged->registrationDate.day,
             partnerMerged->registrationDate.month,
             partnerMerged->registrationDate.year
+        );
+    };
+
+    while (fread(&partnerFileA, sizeof(Partner), 1, fileA)) {
+        fprintf(
+            mergedFile,
+            "%02d|%s|%02d/%02d/%04d\n",
+            partnerFileA.id,
+            partnerFileA.fullName,
+            partnerFileA.registrationDate.day,
+            partnerFileA.registrationDate.month,
+            partnerFileA.registrationDate.year
+        );
+    };
+
+    while (fgets(fileBLine, fileBLineLength, fileB)) {
+        fieldsRead = parseToPartner(fileBLine, &partnerFileB);
+        if (fieldsRead != 3) continue;
+
+        fprintf(
+            mergedFile,
+            "%02d|%s|%02d/%02d/%04d\n",
+            partnerFileB.id,
+            partnerFileB.fullName,
+            partnerFileB.registrationDate.day,
+            partnerFileB.registrationDate.month,
+            partnerFileB.registrationDate.year
         );
     };
 
