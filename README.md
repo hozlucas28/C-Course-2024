@@ -1,5 +1,5 @@
 <h1 align="center">
-    C Couse [2024]
+    C Course [2024]
 </h1>
 
 <h4 align="center">
