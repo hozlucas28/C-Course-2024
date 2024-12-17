@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-    Repository of the Programing assignment - <a href="https://www.unlam.edu.ar/" target="_blank">UNLaM</a> (university).
+    Repository of the Programming assignment - <a href="https://www.unlam.edu.ar/" target="_blank">UNLaM</a> (university).
 </h4>
 
 <p align="center">
@@ -23,7 +23,7 @@
     Summary
 </h2>
 <p>
-    This is a repository where I store all lessons that I take on the Programing assignment of <a href="https://www.unlam.edu.ar/" target="_blank">National University of Matanza</a> (UNLaM), related with C language.
+    This is a repository where I store all lessons that I take on the Programming assignment of <a href="https://www.unlam.edu.ar/" target="_blank">National University of Matanza</a> (UNLaM), related with C language.
 </p>
 
 <h2>
